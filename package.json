@@ -1,0 +1,17 @@
+{
+  "name": "jwt",
+  "version": "1.0.0",
+  "description": "jwt demo for developer collab meeting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gary yochum",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "jsonfile": "^2.2.3",
+    "jsonwebtoken": "^5.7.0"
+  }
+}
