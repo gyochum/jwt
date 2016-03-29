@@ -10,6 +10,9 @@ var secret = 'garyzsuperbigsecret';
 api.use(bp.json());
 
 //routes
+api.get('/', function(request, response){
+   response.send('hey azure'); 
+});
 api.get('/api/music', repo.get);
 api.get('/api/music/:id', repo.findOne);
 api.post('/api/music', repo.save);
