@@ -1,5 +1,6 @@
 var express = require('express');
 var api = express();
+var port = process.env.PORT || 1337;
 var bp = require('body-parser');
 var jwt = require('jsonwebtoken');
 var eJwt = require('express-jwt');
@@ -22,6 +23,6 @@ api.delete('/api/music/:id', repo.delete);
 //error handler
 
 //start
-api.listen(3000, function(){
+api.listen(port, function(){
     console.log('listening on port 3000....');
 });
