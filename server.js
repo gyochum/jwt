@@ -20,9 +20,11 @@ api.post('/api/music', repo.save);
 api.put('/api/music/:id', repo.update);
 api.delete('/api/music/:id', repo.delete);
 
+api.post('/api/login', repo.login);
+
 //error handler
 
 //start
 api.listen(port, function(){
-    console.log('listening on port 3000....');
+    console.log('listening on port ' + port + '....');
 });

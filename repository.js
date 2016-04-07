@@ -1,4 +1,7 @@
 var reader = require('jsonfile');
+var jwt = require('jsonwebtoken');
+var settings = require('./data/settings');
+
 
 exports.get = function(request, response){
     reader.readFile('./data/music.json', function(error, tunes){
@@ -81,4 +84,24 @@ exports.delete = function(request, response){
     else{
         response.send('could not find the tune you are trying to delete');    
     }    
+}
+
+exports.login = function(request, response, next){
+    var post = request.body;
+    var login = reader.readFileSync('./data/login.json');
+    
+    console.log(settings.secret);
+    
+    if(post.username === login.username && post.password === login.password){
+        var payload = {
+            username: post.username    
+        };
+        
+        var token = jwt.sign(payload, settings.secret);
+        
+        response.send(token);                
+    }
+    else{
+        response.sendStatus(403);
+    }
 }
