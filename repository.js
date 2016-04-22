@@ -44,6 +44,8 @@ exports.update = function(request, response){
     var tune = request.body;
     var tunes = reader.readFileSync('./data/music.json');
     
+    console.log(request.user);
+    
     tunes.forEach(function(t, index){
         if(t.id == id){
             t.artist = tune.artist;
@@ -89,15 +91,13 @@ exports.delete = function(request, response){
 exports.login = function(request, response, next){
     var post = request.body;
     var login = reader.readFileSync('./data/login.json');
-    
-    console.log(settings.secret);
-    
+            
     if(post.username === login.username && post.password === login.password){
         var payload = {
             username: post.username    
         };
         
-        var token = jwt.sign(payload, settings.secret);
+        var token = jwt.sign(payload, settings.secret, { expiresIn: '2m' });
         
         response.send(token);                
     }
